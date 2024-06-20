@@ -22,6 +22,7 @@ class _MyCardWidgetState extends State<MyCardWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: widget.imageAsset == null ? 100 : null,
       key: _key,
       constraints: const BoxConstraints(minHeight: 60),
       decoration: BoxDecoration(
@@ -30,29 +31,30 @@ class _MyCardWidgetState extends State<MyCardWidget> {
       ),
       clipBehavior: Clip.hardEdge,
       // padding: const EdgeInsets.all(16),
-      child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Row(
-          children: [
-            Flexible(
-              flex: 3,
+      child: Row(
+        children: [
+          Flexible(
+            flex: 3,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
               child: TextField(
                 controller: _controller,
                 style: const TextStyle(fontSize: 14),
                 maxLines: null,
               ),
             ),
-            const SizedBox(width: 8),
-            Flexible(
-              flex: 1,
-              child: widget.imageAsset != null
-                  ? MyCardPostfixImageWidget(
+          ),
+          Flexible(
+            child: widget.imageAsset != null
+                ? Padding(
+                    padding: const EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                    child: MyCardPostfixImageWidget(
                       imageAsset: widget.imageAsset!,
-                    )
-                  : const MyCardPostfixCircleWidget(),
-            ),
-          ],
-        ),
+                    ),
+                  )
+                : const MyCardPostfixCircleWidget(radius: 250),
+          )
+        ],
       ),
     );
   }

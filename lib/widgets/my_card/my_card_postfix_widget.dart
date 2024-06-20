@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
 
 class MyCardPostfixCircleWidget extends StatelessWidget {
+  final double radius;
+
   const MyCardPostfixCircleWidget({
     super.key,
+    this.radius = 200,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 40,
-      decoration: const BoxDecoration(
-        shape: BoxShape.circle,
-        color: Colors.red,
+    return ClipRect(
+      clipBehavior: Clip.hardEdge,
+      child: OverflowBox(
+        maxHeight: radius,
+        maxWidth: radius,
+        alignment: Alignment.centerLeft,
+        child: Container(
+          decoration: const BoxDecoration(
+            color: Colors.red,
+            shape: BoxShape.circle,
+          ),
+        ),
       ),
     );
   }
