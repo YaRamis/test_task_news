@@ -22,7 +22,7 @@ class _MyCardWidgetState extends State<MyCardWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: widget.imageAsset == null ? 100 : null,
+      height: widget.imageAsset == null ? 200 : null,
       key: _key,
       constraints: const BoxConstraints(minHeight: 60),
       decoration: BoxDecoration(
@@ -38,6 +38,7 @@ class _MyCardWidgetState extends State<MyCardWidget> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
+                textAlign: TextAlign.center,
                 controller: _controller,
                 style: const TextStyle(fontSize: 14),
                 maxLines: null,
@@ -52,7 +53,7 @@ class _MyCardWidgetState extends State<MyCardWidget> {
                       imageAsset: widget.imageAsset!,
                     ),
                   )
-                : const MyCardPostfixCircleWidget(radius: 250),
+                : const MyCardPostfixCircleWidget(radius: 350),
           )
         ],
       ),
